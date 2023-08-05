@@ -1,0 +1,37 @@
+<div style="padding:1rem">
+  <mat-form-field style="width:100%">
+    <mat-label>Search</mat-label>
+    <input matInput placeholder="type something..." #searchProduct />
+  </mat-form-field>
+  <div class="grid-container">
+    <mat-card *ngFor="let product of products | filter: searchProduct.value">
+      <div style="text-align:center">
+        <img
+          mat-card-image
+          [src]="product.image"
+          alt="loading..."
+          height="200px"
+        />
+      </div>
+      <mat-card-header>
+        <mat-card-title>{{ product.title }}</mat-card-title>
+        <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="description">{{ product.description }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <div
+          style="width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 1rem;"
+        >
+          <h3>${{ product.price }}</h3>
+          <button mat-raised-button color="primary">Buy</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
